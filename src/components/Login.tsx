@@ -14,8 +14,13 @@ const Login: React.FC = () => {
     e.preventDefault();
     if (email && password) {
       const userEmail = email.split('@')[0];
-      dispatch(login(userEmail));
-      console.log('Login successful for:', email);
+      
+      // Simple role assignment logic - you can modify this as needed
+      // For demo purposes: admin@example.com becomes admin, others become users
+      const role = email.toLowerCase().includes('admin') ? 'admin' : 'user';
+      
+      dispatch(login({ username: userEmail, role }) as any);
+      console.log('Login successful for:', email, 'with role:', role);
     }
   };
 

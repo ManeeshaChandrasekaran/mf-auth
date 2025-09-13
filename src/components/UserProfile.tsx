@@ -6,6 +6,7 @@ const UserProfile: React.FC = () => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector((state: RootState) => state.user.isLoggedIn);
     const username = useSelector((state: RootState) => state.user.username);
+    const role = useSelector((state: RootState) => state.user.role);
 
     const handleLogout = () => {
         dispatch(logout());
@@ -31,6 +32,7 @@ const UserProfile: React.FC = () => {
             }}>
                 <h3>Profile Information</h3>
                 <p><strong>Username:</strong> {username}</p>
+                <p><strong>Role:</strong> {role}</p>
                 <p><strong>Status:</strong> Logged In</p>
                 <p><strong>Last Login:</strong> {new Date().toLocaleString()}</p>
                 
