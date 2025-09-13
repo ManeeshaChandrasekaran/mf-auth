@@ -39,6 +39,9 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'auth_app',
       filename: 'remoteEntry.js',
+      remotes: {
+        host: 'host@http://localhost:3000/remoteEntry.js',
+      },
       exposes: {
         './Login': './src/components/Login',
         './UserProfile': './src/components/UserProfile',
@@ -46,6 +49,8 @@ module.exports = {
       shared: {
         react: { singleton: true, eager: true },
         'react-dom': { singleton: true, eager: true },
+        'react-redux': { singleton: true },
+        '@reduxjs/toolkit': { singleton: true },
       },
     }),
     new HtmlWebpackPlugin({
